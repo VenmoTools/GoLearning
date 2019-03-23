@@ -315,7 +315,7 @@ ServeMux是一个HTTP请求多路复用器。它将每个传入请求的URL与�
 
 ServeMux还负责清理URL请求路径和主机头，split端口号并重定向包含的任何请求。例如.或..，重复斜杠，使URL更明确
 
-`假设有indexHandler绑定Path为"/"，imageHandler绑定path为“/images”,注意尾部没有斜杠，当请求Path为"/images/thumbnails/"则将会使用indexHandler处理器进行处理，因为绑定imageHandler的Path为/image而不是/image/，如果绑定的Path不是以"/"结尾，只会与完全相同的Path取匹配，如果Path以"/"结尾，请求的Path只有前缀部分与注册的相同，也会认为两个Path匹配`
+<p style="color:red;">假设有indexHandler绑定Path为"/"，imageHandler绑定path为“/images”,注意尾部没有斜杠，当请求Path为"/images/thumbnails/"则将会使用indexHandler处理器进行处理，因为绑定imageHandler的Path为/image而不是/image/，如果绑定的Path不是以"/"结尾，只会与完全相同的Path取匹配，如果Path以"/"结尾，请求的Path只有前缀部分与注册的相同，也会认为两个Path匹配</p>
 
 ServeMux结构如下
 ```go
@@ -601,3 +601,56 @@ func main() {
 ```
 
 ## 使用其他多路复用器
+### 使用httprouter
+
+获取方式 `go get github.com/julienschmidt/httprouter
+`
+```go
+func helloWorld(w http.ResponseWriter,r *http.Request,p httprouter.Params){
+	fmt.Fprint(w,"hello world path:",p.ByName("name"))
+}
+
+func main() {
+	mux := httprouter.New()
+    mux.GET("/hello/:name",helloWorld) // 用来注册处理器和对应的path，其中:name表示/hello/后面的参数，可以通过httprouter.Params获取到，
+    // 例如 http://127.0.0.1:8080/hello/hi 通过p.ByName("name")便获取到hi
+
+	server := http.Server{
+		Addr: "127.0.0.1:8080",
+		Handler:mux,
+	}
+	err := server.ListenAndServe()
+	fmt.Println(err)
+}
+
+
+```
+### 使用Beego
+
+```go
+
+type HelloHandler struct { //结构体需要组合beego.Controller
+	beego.Controller
+}
+
+func (h *HelloHandler) Get(){ // Get方法
+	fmt.Fprint(h.Ctx.ResponseWriter,"Hello")
+}
+
+
+func main() {
+
+	register := beego.NewControllerRegister()
+	register.Add("/hello",&HelloHandler{},"get:Get") // 建立映射
+
+	server := http.Server{
+		Addr: "127.0.0.1:8080",
+		Handler:register,
+	}
+	err := server.ListenAndServe()
+	fmt.Println(err)
+}
+
+
+
+```
