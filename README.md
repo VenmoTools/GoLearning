@@ -9,6 +9,7 @@
 ## 网络编程
 + [Web服务器](web/server.md)
 + [请求与响应](web/request&Resp.md)
++ [HTTPClient](web/client.md)
 
 ## 并发编程
 
