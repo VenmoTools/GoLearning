@@ -2,21 +2,8 @@
 本项目为go学习学习是做的笔记，将其分享出来分为两个部分，笔记部分主要以源码分析和使用方式为主，project主要是实际应用
 
 # 目录
-## go源码探索
-###  内存管理
-+ [TCmalloc](note/memory/TCMalloc介绍.md)(待完成)
-+ [内存分配](note/memory/内存分配.md)
-+ [逃逸分析](note/memory/逃逸分析.md)
-### 垃圾回收(待完成)
-
-### 调度(待完成)
-
-### 通道(待完成)
-
 ## go标准库探索
 + [Context](note/lib/context.md)
-
-
 ## 网络编程
 + [Web服务器](web/server.md)
 + [请求与响应](web/request&Resp.md)
@@ -38,6 +25,18 @@
 + [context](note/beego/context.md)
 + [beego多路复用器](note/beego/router.md)
 + [beegoORM](note/beego/orm.md)
+
+## go源码探索
+###  内存管理
++ [TCmalloc](note/memory/TCMalloc介绍.md)(待完成)
++ [内存分配](note/memory/内存分配.md)(待完成)
++ [逃逸分析](note/memory/逃逸分析.md)
+### 垃圾回收(待完成)
+
+### 调度(待完成)
+
+### 通道(待完成)
+
 
 ## 项目(待完成)
 + [并发字典(哈希版)]()
