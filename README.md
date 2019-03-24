@@ -4,8 +4,9 @@
 # 目录
 ## go源码探索
 ###  内存管理
-+ [TCmalloc](memory/TCMalloc介绍.md)(待完成)
-+ [内存分配](memory/内存分配.md)
++ [TCmalloc](note/memory/TCMalloc介绍.md)(待完成)
++ [内存分配](note/memory/内存分配.md)
++ [逃逸分析](note/memory/逃逸分析.md)
 ### 垃圾回收(待完成)
 
 ### 调度(待完成)
