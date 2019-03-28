@@ -25,12 +25,15 @@
 ### 性能分析
 ### 调试(待完成)
 + [Delve](note/tools/delve.md)
+
 ## 框架源码探索
 ## beego
 + [beegoHttpLib](note/beego/httplib.md)
 + [context](note/beego/context.md)
 + [beego多路复用器](note/beego/router.md)
++ [Controller](note/beego/controller.md)
 + [beegoORM](note/beego/orm.md)
+
 ## Gin(待完成)
 
 ## Iris(待完成)
