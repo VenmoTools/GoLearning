@@ -679,6 +679,7 @@ type Response struct {
 	//在读取Body字段时，响应主体按需流式传输。如果网络连接失败或服务器终止响应，Body.Read调用将返回错误
 	//http客户端和传输保证Body始终为非零，即使在没有正文的响应或具有零长度正文的响应时也是如此。关闭Body是调用者的负责。如果Body未读取完成并关闭，则默认HTTP客户端的传输可能不会重用HTTP/1.x“保持活动”TCP连接。
 	//如果服务器回复了“分块”Transfer-Encoding，则Body会自动取消。
+	// 如果使用ioutil读取第一次能读取到值，第二次将会返回nil因为Body是ReadCloser类型，读取完毕后将会调用Close方法关闭io
 	Body io.ReadCloser
 
 	// ContentLength记录关联内容的长度。值-1表示长度未知。除非Request.Method是“HEAD”，否则值> = 0表示可以从Body读取给定的字节数。

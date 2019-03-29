@@ -1,5 +1,5 @@
 # beego多路复用器
-
+在beego/app.go文件中有一个为BeeApp的结构，该结构主要是对多路复用器以及其他的一层封装
 ## 变量
 
 ```go
@@ -307,21 +307,45 @@ func (t *Tree) addseg(segments []string, route interface{}, wildcards []string, 
 
 #### 注解注册
 ```go
-
-// Include only when the Runmode is dev will generate router file in the router/auto.go from the controller
-// Include(&BankAccount{}, &OrderController{},&RefundController{},&ReceiptController{})
+// 如果启用开发模式，将会根据Controller创建router/auto.go文件
+// 使用：
+// type BankAccount struct{
+//   beego.Controller
+// }
+//
+// register the function
+// func (b *BankAccount)Mapping(){
+//  b.Mapping("ShowAccount" , b.ShowAccount)
+//  b.Mapping("ModifyAccount", b.ModifyAccount)
+//}
+//
+// //@router /account/:id  [get]
+// func (b *BankAccount) ShowAccount(){
+//    //logic
+// }
+//
+//
+// //@router /account/:id  [post]
+// func (b *BankAccount) ModifyAccount(){
+//    //logic
+// } 
+// 	Include(&BankAccount{}, &OrderController{},&RefundController{},&ReceiptController{})
 func (p *ControllerRegister) Include(cList ...ControllerInterface) {
 	if BConfig.RunMode == DEV {
 		skip := make(map[string]bool, 10)
-		for _, c := range cList {
+		for _, c := range cList { // 循环处理Controller
 			reflectVal := reflect.ValueOf(c)
+			// 返回对应的值或者指针指向的值
 			t := reflect.Indirect(reflectVal).Type()
+			// 获取go path
 			wgopath := utils.GetGOPATHs()
 			if len(wgopath) == 0 {
 				panic("you are in dev mode. So please set gopath")
 			}
 			pkgpath := ""
+			// 获取所有路径名
 			for _, wg := range wgopath {
+				// 在评估任何符号链接后，EvalSymlinks返回路径名。如果path是相对的，则结果将相对于当前目录，除非其中一个组件是绝对符号链接.EvalSymlinks在结果上调用Clean
 				wg, _ = filepath.EvalSymlinks(filepath.Join(wg, "src", t.PkgPath()))
 				if utils.FileExists(wg) {
 					pkgpath = wg
@@ -340,36 +364,21 @@ func (p *ControllerRegister) Include(cList ...ControllerInterface) {
 		reflectVal := reflect.ValueOf(c)
 		t := reflect.Indirect(reflectVal).Type()
 		key := t.PkgPath() + ":" + t.Name()
+		// GlobalControllerRouter用于存储controller的comments
+		// comments= pkgpath+controller
+		// Include前需要注册相应的Controller以及对应的处理函数
+		// 如果没有注册将不会使用
 		if comm, ok := GlobalControllerRouter[key]; ok {
 			for _, a := range comm {
+				// 遍历所有的Filters并向ControllerRegister注册
 				for _, f := range a.Filters {
 					p.InsertFilter(f.Pattern, f.Pos, f.Filter, f.ReturnOnOutput, f.ResetParams)
 				}
-
+				// 从ControllerComments添加path规则，Controller和请求方法等信息
 				p.addWithMethodParams(a.Router, c, a.MethodParams, strings.Join(a.AllowHTTPMethods, ",")+":"+a.Method)
 			}
 		}
 	}
 }
 
-```
-
-## tree结构
-
-```go
-// Tree has three elements: FixRouter/wildcard/leaves
-// fixRouter stores Fixed Router
-// wildcard stores params
-// leaves store the endpoint information
-type Tree struct {
-	//prefix set for static router
-	prefix string
-	//search fix route first
-	fixrouters []*Tree
-	//if set, failure to match fixrouters search then search wildcard
-	wildcard *Tree
-	//if set, failure to match wildcard search
-	leaves []*leafInfo
-}
-\
 ```
