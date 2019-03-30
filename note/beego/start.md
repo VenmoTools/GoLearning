@@ -4,7 +4,6 @@
 当使用beego包时将会初始化调用各组件的Init函数,因此在调用beego.Run方法之前必须将所有的组件初始化完毕
 
 ### Config组件
-
 Config首先会使用newBConfig生成默认的Config设置，然后根据conf路径下的app.conf存储到beegoAppConfig(Map)，如果没有该配置文件则会使用NewFakeConfig生成空的map，否则将调用parseConfig(主要是assignConfig函数)来解析配置文件然后存储到beegoAppConfig中，也可以使用LoadAppConfig()来指定配置文件
 
 配置文件首先会根据beegoAppConfig中的内容来进行设置，如果没有则根据Beego的默认配置使用
@@ -117,8 +116,6 @@ func newBConfig() *Config {
 
 ```
 
-
-
 ### template
 ```go
 // DateFormat 格式规则
@@ -191,9 +188,10 @@ func init() {
 	beegoTplFuncMap["urlfor"] = URLFor // build a URL to match a Controller and it's method
 }
 ```
+### Controller
+controller将会调用用户的router文件中的router.go文件的Init文件，注册是将会调用Router函数注册
 
 ## beego.Run()
-
 当在运行main函数中的beego.Run方法后首先执行initBeforeHTTPRun函数进行初始化
 
 initBeforeHTTPRun将会调用AddAPPStartHook注册钩子函数，注册的钩子函数如下
@@ -273,6 +271,7 @@ func registerSession() error {
 
 ### registerTemplate函数
 registerTemplate函数使用AddViewPath来配置View文件路径，如果在beego.Run()调用将会panic
+
 ```go
 func registerTemplate() error {
 	defer lockViewPaths()
