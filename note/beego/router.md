@@ -619,9 +619,7 @@ func (t *Tree) addseg(segments []string, route interface{}, wildcards []string, 
 		}
 	}
 }
-
 ```
-
 ### 添加处理函数
 手工注册的方式使用的是结构体作为参数添加的，beego也提供了使用函数的方式添加处理器
 
@@ -706,7 +704,7 @@ func (p *ControllerRegister) Any(pattern string, f FilterFunc) {
 }
 ```
 注册的流程与注册Controller的流程基本一致，如果使用函数的方式routerType将会是routerTypeRESTFul
-```
+```go
 // AddMethod add http method router
 // usage:
 //    AddMethod("get","/api/:id", func(ctx *context.Context){
@@ -764,7 +762,6 @@ func (p *ControllerRegister) Handler(pattern string, h http.Handler, options ...
 ```
 
 ### Filter
-
 Filter会根据指定的pos（调用位置）在不同的阶段进行使用，也可作为单独的处理函数，在注解路由中将会使用到，可以使用InsertFilter来添加
 
 ```go

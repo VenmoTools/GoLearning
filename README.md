@@ -17,7 +17,7 @@
 + [基本接口](note/io/interface.md)
 + [IO函数](note/io/interface.md)
 + [ioutil](note/io/ioutil.md)
-+ [bufio](note/io/bufio.md)
++ [bufio](note/io/bufio.md)(待完成)
 + [格式化IO](note/io/fmt.md)
 
 ## 工具链(待完成)
