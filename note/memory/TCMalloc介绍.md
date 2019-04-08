@@ -1,5 +1,7 @@
 # TCMalloc
-原文链接：http://goog-perftools.sourceforge.net/doc/tcmalloc.html，因为有人翻译了，不再重新翻译，原文：https://www.cnblogs.com/blueoverflow/p/4928369.html
+TCMalloc原文链接：http://goog-perftools.sourceforge.net/doc/tcmalloc.html
+
+因为有人翻译了，不再重新翻译，翻译原文：https://www.cnblogs.com/blueoverflow/p/4928369.html
 
 ## 引言
 
