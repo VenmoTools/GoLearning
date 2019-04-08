@@ -7,9 +7,9 @@
 ## go标准库探索
 + [Context](note/lib/context.md)
 ## 网络编程
-+ [Web服务器](web/server.md)
-+ [请求与响应](web/request&Resp.md)
-+ [HTTPClient](web/client.md)
++ [Web服务器](note/web/server.md)
++ [请求与响应](note/web/request&Resp.md)
++ [HTTPClient](wnote/web/client.md)
 ## 并发编程(待完成)
 + [并发概念](note/concurrency/概念.md)
 + [并发模式](note/concurrency/pattern.md)
@@ -33,7 +33,7 @@
 + [context](note/beego/context.md)
 + [beego多路复用器](note/beego/router.md)
 + [注解路由](note/beego/parser.md)
-+ [beegoORM](note/beego/orm.md)
++ [beegoORM](note/beego/orm.md)(待完成)
 
 ## Gin(待完成)
 

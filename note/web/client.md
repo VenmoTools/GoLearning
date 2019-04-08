@@ -1,5 +1,34 @@
 # HTTPClient
 
+## 发送请求流程
+
+发送GET请求，代码如下
+```go
+func main() {
+	// 创建一个HTTPClient客户端
+	client := http.Client{}
+	// 新建一个请求
+	request,err := http.NewRequest("GET","http://www.baidu.com",nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// 发送请求
+	res,err := client.Do(request)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// 读取内容
+	data,_:= ioutil.ReadAll(res.Body)
+
+	fmt.Println(string(data))
+}
+```
+
+1. 创建一个客户端，如果不是默认使用HTTP的DefaultClient
+2. 使用NewRequest新建一个请求，该函数首先会判断传入的method，如果为空默认使用GET请求，随后使用validMethod来验证请求是否合法，使用url.Parse来解析传入的url，处理传入的body，首先尝试转换为ReadCloser如果无法转换则包装成NopCloser，然后调用removeEmptyPort//todo，新建Request然后根据传入的body进行解析，主要是bytes.Buffer，bytes.Reader，strings.Reader，设置ContentLength和GetBody的函数如果没有指定body则使用NoBody
+3. 使用Do方法发送请求，其中有一个testHookClientDoResult函数，该函数在请求结束后调用，随后检查请求URL如果没有通过直接调用closebody并返回错误
+4. 初始化变量，主要内容有deadline（通过deadline()方法生成，根据设置超时时间），reqs(*Request类型的切片),resp()
+
 ## Client
 
 Client结构如下

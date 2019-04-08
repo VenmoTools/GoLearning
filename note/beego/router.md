@@ -7,6 +7,7 @@ router是beego实现的一个多路复用器，提供了很多注册处理器方
 
 ```go
 
+// 该变量用于在不同的时刻调用不同的函数，具体可以查看ServeHTTP方法
 const (
 	BeforeStatic = iota
 	BeforeRouter
