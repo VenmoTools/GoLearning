@@ -1,7 +1,7 @@
 # go语言笔记
 本项目为go学习学习是做的笔记，分为两个部分，note部分主要以源码分析和使用方式为主，project主要是实际应用
 
-使用的go版本以及环境 go version go1.11 darwin/amd64
+使用的go版本以及环境 go version go1.11 darwin/amd64 | mac os
 
 # 目录
 ## go标准库探索
