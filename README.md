@@ -17,7 +17,7 @@
 + [基本接口](note/io/interface.md)
 + [IO函数](note/io/interface.md)
 + [ioutil](note/io/ioutil.md)
-+ [bufio](note/io/bufio.md)(待完成)
++ [bufio](note/io/bufio.md)
 + [格式化IO](note/io/fmt.md)
 
 ## 工具链(待完成)
@@ -35,7 +35,9 @@
 + [注解路由](note/beego/parser.md)
 + [beegoORM](note/beego/orm.md)(待完成)
 
-## Gin(待完成)
+## Gin
++ [gin启动流程](note/beego/start.md)
++ [context](note/gin/start.md)
 
 ## Iris(待完成)
 
