@@ -42,6 +42,7 @@
 
 ## go源码探索
 ###  内存管理
++ [虚拟内存](note/memory/virualMemory.md)
 + [TCmalloc](note/memory/TCMalloc介绍.md)
 + [内存分配](note/memory/内存分配.md)(待完成)
 + [逃逸分析](note/memory/逃逸分析.md)

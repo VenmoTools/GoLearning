@@ -34,7 +34,9 @@ func (e *Engine) Run(request Request) {
 
 	e.Scheduler.Start()
 
-	e.createWorker(e.Scheduler.WorkChan(), e.Scheduler)
+	for i:=0;i<e.WorkChanNum；i++{
+		e.createWorker(e.Scheduler.WorkChan(), e.Scheduler)
+	}
 
 	e.Scheduler.Submit(request)
 
