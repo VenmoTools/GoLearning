@@ -150,5 +150,4 @@ func (c *Context) GetQueryArray(key string) ([]string, bool) {
 	}
 	return []string{}, false
 }
-
 ```

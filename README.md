@@ -37,7 +37,8 @@
 
 ## Gin
 + [gin启动流程](note/beego/start.md)
-+ [context](note/gin/start.md)
++ [context](note/gin/context.md)
++ [路由](note/gin/router.md)
 
 ## Iris(待完成)
 
