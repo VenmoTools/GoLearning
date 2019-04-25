@@ -22,7 +22,11 @@
 
 ## 工具链(待完成)
 ### 编译
++ [go build](note/tools/delve.md)
++ [交叉编译](note/tools/delve.md)
++ [动态库编译](note/tools/delve.md)
 ### 性能分析
++ [pprof](note/tools/delve.md)
 ### 调试(待完成)
 + [Delve](note/tools/delve.md)
 
@@ -42,10 +46,12 @@
 
 ## Iris(待完成)
 
+## 计算机系统
+### 内存
++ [虚拟内存](note/memory/virualMemory.md)
 
 ## go源码探索
-###  内存管理
-+ [虚拟内存](note/memory/virualMemory.md)
+### 内存管理
 + [TCmalloc](note/memory/TCMalloc介绍.md)
 + [内存分配](note/memory/内存分配.md)(待完成)
 + [逃逸分析](note/memory/逃逸分析.md)
