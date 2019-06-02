@@ -27,8 +27,9 @@
 + [动态库编译](note/tools/delve.md)
 ### 测试
 + [单元测试](note/tools/test.md)
++ [性能测试](note/tools/bench.md)
 ### 性能分析
-+ [pprof](note/tools/delve.md)
++ [pprof](note/tools/pprof.md)
 ### 调试(待完成)
 + [Delve](note/tools/delve.md)
 
