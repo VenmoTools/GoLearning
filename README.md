@@ -3,6 +3,7 @@
 
 使用的go版本以及环境 go version go1.11 darwin/amd64 | mac os
 
+(公司有项目。。更新较慢)
 # 目录
 ## go标准库探索
 + [Context](note/lib/context.md)
@@ -28,8 +29,7 @@
 ### 测试
 + [单元测试](note/tools/test.md)
 + [性能测试](note/tools/bench.md)
-### 性能分析
-+ [pprof](note/tools/pprof.md)
++ [性能分析](note/tools/pprof.md)
 ### 调试(待完成)
 + [Delve](note/tools/delve.md)
 
@@ -65,8 +65,6 @@
 
 ### 通道(待完成)
 + [Channel](note/chan/chan.md)
-
-PS:源码暂时不更了。。。真看不动了。。头发都要掉光了
 
 
 ## 微服务

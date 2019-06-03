@@ -57,7 +57,6 @@ func (c *Context) reset() {
 
 ```go
 // Next应该只在中间件中使用。它在调用处理程序内的链中执行挂起的处理程序。
-
 // 循环调用handlers中的方法
 func (c *Context) Next() {
 	c.index++
